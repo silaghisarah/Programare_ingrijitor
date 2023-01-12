@@ -1,0 +1,82 @@
+﻿@page "{id:int?}"
+@model Programare_ingrijitor.Pages.Zone.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="cutie" class="table" class="cutie" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+
+<h1>Zone</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Zona[0].DenumireZona)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.ZonaData.Zone) 
+    {
+            string selectedRow = "";
+            if(item.ID == Model.ZonaID)
+            {
+                selectedRow = "table-success";
+            }
+
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.DenumireZona)
+            </td>
+            <td>
+                <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@if (Model.ZonaData.Servicii != null)
+{
+    <h3>Servicii din cadrul unui Zona:</h3>
+    <table class="table">
+
+        @foreach (var item in Model.ZonaData.Zone)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.ZonaID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+
+                <td>
+                    @{
+                        foreach (var b in item.Servicii)
+                        {
+
+                            @b.Denumire_Serviciu @: @b.Ingrijitor.NumeComplet
+
+                            <br />
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+</div>
+
+
+

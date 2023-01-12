@@ -1,0 +1,48 @@
+﻿@page
+@model Programare_ingrijitor.Pages.Servicii.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="cutie">
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Serviciu</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Serviciu.Denumire_Serviciu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Serviciu.Denumire_Serviciu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Serviciu.Ingrijitor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Serviciu.Ingrijitor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Serviciu.Cost_consultatie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Serviciu.Cost_consultatie)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Serviciu.Data_Programare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Serviciu.Data_Programare)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Serviciu.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
+</div>

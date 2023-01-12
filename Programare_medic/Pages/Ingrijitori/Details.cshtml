@@ -1,0 +1,34 @@
+﻿@page
+@model Programare_ingrijitor.Pages.Ingrijitori.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="cutie">
+
+<h1>Details</h1>
+
+<div>
+    <h4>Ingrijitor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ingrijitor.Nume)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ingrijitor.Nume)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ingrijitor.Prenume)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ingrijitor.Prenume)
+        </dd class="col-sm-10">
+         
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Ingrijitor?.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+</div>

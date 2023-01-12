@@ -1,0 +1,27 @@
+﻿@page
+@model Programare_ingrijitor.Pages.Categorii.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="cutie">
+
+<h1>Details</h1>
+
+<div>
+    <h4>Categorie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Categorie.DenumireCategorie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Categorie.DenumireCategorie)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Categorie?.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+</div>

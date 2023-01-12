@@ -1,0 +1,110 @@
+﻿@page "/"
+@model Programare_ingrijitor.Pages.Servicii.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="cutie" data-aos="fade-right" data-aos-duration="2000">
+  <h1>Servicii</h1>
+
+
+  <p>
+   <a asp-page="Create">Create New</a>
+  </p>
+
+  <form asp-page="./Index" method="get">
+      <div class="form-actions no-color">
+          <p>
+               Găsiți după denumirea serviciului / numele Ingrijitorului:
+               <input type="text" name="SearchString" value="@Model.CurrentFilter"/>
+               <input type="submit" value="Search" class="btn btn-primary" /> |
+               <a asp-page="./Index">Back to full List</a>
+          </p>
+      </div>
+  </form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DenumireServiciuSort">
+                @Html.DisplayNameFor(model => model.Serviciu[0].Denumire_Serviciu)
+                </a>
+            </th>
+
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.IngrijitorSort">
+                @Html.DisplayNameFor(model => model.Serviciu[0].Ingrijitor)
+                </a>
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Serviciu[0].Cost_consultatie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model =>model.Serviciu[0].Data_Programare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model =>model.Serviciu[0].Zona.DenumireZona)
+            </th>
+            <th colspan="2">
+                @Html.DisplayNameFor(model =>model.Serviciu[0].ServiciuCategorii)
+            </th>
+       
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ServiciuD.Servicii)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.ServiciuID)
+            {
+                selectedRow = "table-success";
+            }
+
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Denumire_Serviciu)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingrijitor.Nume)
+                    @Html.DisplayFor(modelItem => item.Ingrijitor.Prenume)
+
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost_consultatie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data_Programare)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zona.DenumireZona)
+                </td>
+                <td>
+                  
+                        @foreach (var Categorie in item.ServiciuCategorii)
+                        {
+                         @Categorie.Categorie.ID @: @Categorie.Categorie.DenumireCategorie <br />
+                        }
+                    
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div/>
+
+
+
+

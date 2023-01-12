@@ -1,0 +1,97 @@
+﻿@page
+@model Programare_ingrijitor.Pages.Servicii.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="cutie">
+
+<h1>Edit</h1>
+
+<h4>Serviciu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Serviciu.ID" />
+            <div class="form-group">
+                <label asp-for="Serviciu.Denumire_Serviciu" class="control-label"></label>
+                <input asp-for="Serviciu.Denumire_Serviciu" class="form-control" />
+                <span asp-validation-for="Serviciu.Denumire_Serviciu" class="text-danger"></span>
+            </div>
+            <!--
+            <div class="form-group">
+                <label asp-for="Serviciu.Ingrijitor" class="control-label"></label>
+                <input asp-for="Serviciu.Ingrijitor" class="form-control" />
+                <span asp-validation-for="Serviciu.Ingrijitor" class="text-danger"></span>
+            </div>
+            -->
+            <div class="form-group">
+                <label asp-for="Serviciu.Cost_consultatie" class="control-label"></label>
+                <input asp-for="Serviciu.Cost_consultatie" class="form-control" />
+                <span asp-validation-for="Serviciu.Cost_consultatie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serviciu.Data_Programare" class="control-label"></label>
+                <input asp-for="Serviciu.Data_Programare" class="form-control" />
+                <span asp-validation-for="Serviciu.Data_Programare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serviciu.ZonaID" class="control-label">Denumire Zona</label>
+                <select asp-for="Serviciu.ZonaID" class="form-control" asp-items="ViewBag.ZonaID"> </select>
+                <span asp-validation-for="Serviciu.ZonaID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Serviciu.IngrijitorID" class="control-label">Nume Ingrijitor</label>
+                <select asp-for="Serviciu.IngrijitorID" class="form-control" asp-items="ViewBag.IngrijitorID">
+                </select>
+                <span asp-validation-for="Serviciu.IngrijitorID" class="text-danger"></span>
+            </div>
+
+            
+            <div class="form-group">
+                <div class="table">
+                    <table>
+                        <tr>
+                             @{
+                                 int cnt = 0;
+                                 foreach (var cat in Model.CategorieAtribuitaServiciuList)
+                                 {
+                                     if (cnt++ % 3 == 0)
+                                     {
+                                         @:</tr><tr>
+                                     }
+                                     @:<td>
+                                         <input type="radio"
+                                             name="selectedCategorii"
+                                             value="@cat.CategorieID"
+                                             @(Html.Raw(cat.Atribuire ?
+                                                 "checked=\"checked\"" : "")) />
+                                         @cat.CategorieID @: @cat.Denumire
+                                     @:</td>
+                                 }
+                             @:</tr>
+                             }
+                    </table>
+                </div>
+             </div>
+
+                      
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

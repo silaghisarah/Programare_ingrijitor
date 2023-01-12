@@ -1,0 +1,42 @@
+﻿@page
+@model Programare_ingrijitor.Pages.Ingrijitori.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="cutie">
+
+<h1>Edit</h1>
+
+<h4>Ingrijitor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Ingrijitor.ID" />
+            <div class="form-group">
+                <label asp-for="Ingrijitor.Nume" class="control-label"></label>
+                <input asp-for="Ingrijitor.Nume" class="form-control" />
+                <span asp-validation-for="Ingrijitor.Nume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingrijitor.Prenume" class="control-label"></label>
+                <input asp-for="Ingrijitor.Prenume" class="form-control" />
+                <span asp-validation-for="Ingrijitor.Prenume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
