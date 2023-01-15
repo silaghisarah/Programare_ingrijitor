@@ -7,8 +7,11 @@ namespace Programare_ingrijitor.Models
     {
         public int ID { get; set; }
 
-        
+        [RegularExpression(@"^[A-Z]+[a-z\s]*$")]
+        [StringLength(30, MinimumLength = 3)]
         public string Nume { get; set; }
+        [RegularExpression(@"^[A-Z]+[a-z\s]*$")]
+        [StringLength(30, MinimumLength = 3)]
 
         public string Prenume { get; set; }
 
